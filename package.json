@@ -1,0 +1,41 @@
+{
+  "name": "agile-policy-sample",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "node lib/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint lib/**.js",
+    "lint:fix": "eslint --fix lib/**.js",
+    "docs" : "jsdoc2md 'lib/**/*.js' > DOCUMENTATION.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Agile-IoT/agile-policy-sample.git"
+  },
+  "author": "",
+  "license": "EPL-1.0",
+  "bugs": {
+    "url": "https://github.com/Agile-IoT/agile-policy-sample/issues"
+  },
+  "homepage": "https://github.com/Agile-IoT/agile-policy-sample#readme",
+  "dependencies": {
+    "agile-sdk": "^1.2.6",
+    "axios": "^0.17.1",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "http-errors": "^1.6.2",
+    "rand-token": "^0.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.14.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "jsdoc-to-markdown": "^3.0.3"
+  }
+}
