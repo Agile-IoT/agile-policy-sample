@@ -2,7 +2,8 @@
 
 <dl>
 <dt><a href="#module_contacts">contacts</a></dt>
-<dd><p>A module loading contacts from memory and applying policies.</p>
+<dd><p>A module loading contacts from memory and applying policies.
+This module contains an example of read actions (list contacts) and write accions (add contact) which are mapped by this example from HTTP GET and POST requests</p>
 </dd>
 <dt><a href="#module_github">github</a></dt>
 <dd><p>A module loading github updates for AGILE and applying policies.</p>
@@ -19,6 +20,13 @@
 
 ## contacts
 A module loading contacts from memory and applying policies.
+This module contains an example of read actions (list contacts) and write accions (add contact) which are mapped by this example from HTTP GET and POST requests
+
+
+* [contacts](#module_contacts)
+    * [~executeAction()](#module_contacts..executeAction)
+    * [~evaluateWrite()](#module_contacts..evaluateWrite)
+    * [~evaluateRead()](#module_contacts..evaluateRead)
 
 <a name="module_contacts..executeAction"></a>
 
@@ -30,6 +38,18 @@ Also, depending on whether the action is a read or a write, the proper arguments
 If the policy allows it, the module executes the call
 Also for each element in the contacts array, the policy for "actions.contacts[${field}]" where field is the name of the file used is evaluated.
 This allows for finer access control rules (i.e. you can read only name and email but not number)
+
+**Kind**: inner method of [<code>contacts</code>](#module_contacts)  
+<a name="module_contacts..evaluateWrite"></a>
+
+### contacts~evaluateWrite()
+This internal function checks that the authenticated user can write to the array of contacts. And if it is possible, it adds it to the list
+
+**Kind**: inner method of [<code>contacts</code>](#module_contacts)  
+<a name="module_contacts..evaluateRead"></a>
+
+### contacts~evaluateRead()
+This internal function checks that the authenticated user can read from to the array of contacts. Depending on which fields the user can read, it returns them or not in the array.
 
 **Kind**: inner method of [<code>contacts</code>](#module_contacts)  
 <a name="module_github"></a>
