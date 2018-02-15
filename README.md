@@ -2,7 +2,11 @@
 
 This project contains a sample to let users interested in using the agile security framework have an initial application that uses agile policies to control access to its data (data must not come from the agile APIs only).
 
-## Quick getting started guide!
+This README instructs how to run the sample app in two ways:
+* **local** your machine (then you need to manually pass the token)
+* **deploy as part of the agile-stack** in this case you should build the container and the app will be integrated with the AGILE-OSJS interface.
+
+## Local Deployment
 
 install the app:
 
@@ -23,6 +27,42 @@ Then log-in in your gateway by going to  OSJS (http://$AGILE_HOST:8000). Then co
 ```
 http://localhost:4000/?token=WOuR8Le5Y3TQryvymkTdtXTeYROrMSLVV4ga9FWaAW66M2taGDSXekFSI23rDlpJ
 ```
+
+
+## Delpoying in the gateway
+
+First checkout and build the container.
+```
+git clone https://github.com/Agile-IoT/agile-policy-sample
+cd agile-policy-sample
+##Check the FROM line and update to your architecture if required (ARM or X86-64)
+docker build -t agile-policy-sample .
+```
+
+
+Then add the following to your docker-compose file. But, keep in mind, if you don't have the AGILE_HOST defined in when your docker-compose is loaded replace it for the actual value where your gateway (with agile-security and everything else is running):
+```
+  agile-policy-sample:
+    image: agile-policy-sample
+    container_name: agile-policy-sample
+    restart: always
+    ports:
+      - 4000:4000/tcp
+    environment:
+      - AGILE_HOST=$AGILE_HOST
+      - INDOCKER=1
+```
+
+
+Then checkout the agile-osjs policy sample and put it where your $DATA configuration in the docker-compose env or agile.config points to. (depending on whether you are using docker-compose or the agile-cli). The following example shows how to place the osjs-application in the right position, assuming your $DATA variable pints to ~/.agile/:
+
+```
+mkdir  ~/.agile/osjs-apps/
+git clone https://github.com/Agile-IoT/agile-osjs-sample ~/.agile/osjs-apps/
+```
+
+Then start your agile stack, and OSJS will automatically load an application in the menu that points to the service within the container you just built.
+
 
 
 ## What the application is about
