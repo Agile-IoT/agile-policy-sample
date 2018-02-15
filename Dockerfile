@@ -1,3 +1,4 @@
+#For ARM use this one.
 #FROM resin/raspberry-pi3-node:7.8.0-20170426
 #For intel use this one 
 FROM resin/intel-nuc-node:7.8.0-20170506
