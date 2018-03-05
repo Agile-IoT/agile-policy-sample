@@ -8,6 +8,9 @@ This module contains an example of read actions (list contacts) and write accion
 <dt><a href="#module_github">github</a></dt>
 <dd><p>A module loading github updates for AGILE and applying policies.</p>
 </dd>
+<dt><a href="#module_sql">sql</a></dt>
+<dd><p>A module using agile-sql connector to query databases.</p>
+</dd>
 <dt><a href="#module_router">router</a></dt>
 <dd><p>A module with basic routes for the site.</p>
 </dd>
@@ -67,6 +70,21 @@ Also, depending on whether the action is a read or a write, the proper arguments
 If the policy allows it, the module executes the call and returns an array of updates
 
 **Kind**: inner method of [<code>github</code>](#module_github)  
+<a name="module_sql"></a>
+
+## SQL
+A module using agile-sql connector to query databases. To configure the MySQL database, please see [agile-sql](https://github.com/Agile-IoT/agile-sql).
+
+<a name="module_sql..executeAction"></a>
+
+### sql~executeAction()
+This module instantiates the agile-sdk with the current session token (from the router).
+Then, it evaluates whether the user logged in can execute the sql actions.
+To verify the policy, the policy for the action "actions.sql" for entity equivalent to the current app (in the agile_conf.app object) is used.
+Also, depending on whether the action is a read or a write, the proper arguments are passed to the agile pdp.
+If the policy allows it, the module executes the calls to the sql connector. It queries (CREATE, INSERT, SELECT) the user table in the <code>agile</code> database (the database must exist already).
+
+**Kind**: inner method of [<code>sql</code>](#module_sql)  
 <a name="module_router"></a>
 
 ## router
