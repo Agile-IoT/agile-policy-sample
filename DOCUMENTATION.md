@@ -73,7 +73,7 @@ If the policy allows it, the module executes the call and returns an array of up
 <a name="module_sql"></a>
 
 ## SQL
-A module using agile-sql connector to query databases. To configure the MySQL database, please see [agile-sql](https://github.com/Agile-IoT/agile-sql).
+A module using agile-sql connector to query databases. To configure MySQL or CryptDB (enrypted database) for this project, please see [the stack integration documentation](https://github.com/Agile-IoT/agile-sql/blob/custom_backend/STACK.md).
 
 <a name="module_sql..executeAction"></a>
 
