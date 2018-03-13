@@ -84,10 +84,20 @@ To be able to interact with a CryptDB database, add the following micro-services
       - agile-cryptdb
     ports:
       - 3005:3005/tcp
-    environment:
-      BACKEND_HOST: agile-cryptdb
-      BACKEND_PORT: 3399
     volumes:
       - $DATA/agile-sql/:/etc/agile-sql/    
 ```
-More information can be found at [agile-sql](https://github.com/agile-iot/agile-sql) and [Practical-CryptDB-Docker](https://github.com/agile-iot/Practical-CryptDB-Docker)
+**Note:** To be able to use another backend database, it is necessary to change the default host and/or port of the database backend in agile-sql. 
+According to the docker-compose snippet shown before your configuration would be in $DATA/agile-sql/agile-db.js . Which is commonly ~/.agile/agile-sql/agile-db.js.
+
+To adjust the default configuration for the CryptDB example above, you can use the following example for the database host:
+    
+    db:{
+      host: 'agile-cryptdb',
+      user: 'root',
+      port: 3399,
+      password: 'root',
+      database: 'agile'
+    }
+    
+More information and troubleshooting can be found at [agile-sql](https://github.com/agile-iot/agile-sql) and [Practical-CryptDB-Docker](https://github.com/agile-iot/Practical-CryptDB_Docker)
