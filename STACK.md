@@ -1,7 +1,14 @@
 # Stack integration
-This documentation shows how to configure the docker-compose file to use external services for some of the modules presented in this project.
+This documentation shows what configurations need to be made to use external services for some of the modules presented in this project.
 ## SQL
 This module requires the AGILE-SQL Connector ([agile-sql](https://github.com/agile-iot/agile-sql)) and AGILE-SQL-PARSER ([agile-sqlparser](https://github.com/agile-iot/agile-sqlparser)) and a database. The database can be either a plain MySQL database or CryptDB, which stores the data encrypted in a MySQL database.
+
+Furthermore, set the entity id of the used database entity correctly in  ```agile_conf.js```, e.g. 
+
+    sql: {
+      host: 'http://' + host + ':3005/query',
+      entityId: 'sql-db-3306-agile'
+    }
 ### MySQL Database
 To be able to interact with a MySQL database, add the following micro-services to your docker-compose file:
 
