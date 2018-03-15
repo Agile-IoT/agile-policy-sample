@@ -74,15 +74,25 @@ If the policy allows it, the module executes the call and returns an array of up
 
 ## SQL
 A module using agile-sql connector to query databases. To configure MySQL or CryptDB (enrypted database) for this project, please see [the stack integration documentation](https://github.com/Agile-IoT/agile-sql/blob/custom_backend/STACK.md).
+* [sql](#module_sql)
+    * [~executeAction()](#module_sql..executeAction)
+    * [~prepareTables()](#module_sql..prepareTables)
 
 <a name="module_sql..executeAction"></a>
 
 ### sql~executeAction()
 This module instantiates the agile-sdk with the current session token (from the router).
-Then, it evaluates whether the user logged in can execute the sql actions.
-To verify the policy, the policy for the action "actions.sql" for entity equivalent to the current app (in the agile_conf.app object) is used.
-Also, depending on whether the action is a read or a write, the proper arguments are passed to the agile pdp.
-If the policy allows it, the module executes the calls to the sql connector. It queries (CREATE, INSERT, SELECT) the user table in the <code>agile</code> database (the database must exist already).
+Then it evaluates whether the user logged in can execute certain actions on the SQl-databases (actions.tables.contacts and actions.tables.secrets).
+To verify the policies, the policies for the actions "actions.tables", "actions.tables.contacts" and "actions.tables.secrets" the entity equivalent to the used database is used.
+Also, depending on whether the action is a read or a write (depending on the SQL query, e.g. SELECT = READ, INSERT = WRITE etc.), the proper arguments are passed to the agile pdp.
+If the policy allows it, the module executes the calls to the sql connector. The database that is used in the one defined in [agile-sql](https://github.com/Agile-IoT/agile-sql/blob/master/conf/agile-db.js) and must exist already.
+
+**Kind**: inner method of [<code>sql</code>](#module_sql)  
+<a name="module_router"></a>
+
+### sql~prepareTables()
+This method evaluates whether the user logged in can create tables in the database (actions.tables.contacts and actions.tables.secrets).
+Then it queries the sql connector whether the two tables (<code>contacts</code> and <code>secrets</code>) do exist already, and try to create them otherwise.
 
 **Kind**: inner method of [<code>sql</code>](#module_sql)  
 <a name="module_router"></a>
