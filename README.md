@@ -76,7 +76,7 @@ This application has  two main "model" modules:
 
 * contacts: keeps an in-memory list of contacts (objects with name, number and email attributes) and sends them to the browser
 * github: queries github to obtain the latest news from the agile-iot organization and renders the latest events with the icon of the github user, the kind of action and the repository associated with it.
-* sql: queries a sql database through the [agile-sql](https://github.com/Agile-IoT/agile-sql) connector. It creates a user table, inserts a new user and displays the current entries of the table. On each page reload a new user is added.
+* sql: queries a sql database through the [agile-sql](https://github.com/Agile-IoT/agile-sql) connector. It creates a user table, inserts a new user and displays the current entries of the table. On each page reload a new user is added. For a more detailed explanation how to set up the sql module, see the instructions to integrate the agile stack in this sample [here](https://github.com/Agile-IoT/agile-policy-sample/blob/agile-sql/STACK.md).
 
 ### Extensibility
 
